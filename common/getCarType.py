@@ -27,5 +27,3 @@ model_type_detail = [key["Code"] for key in model if key["Id"] == model_name]
 # print(model_type)
 print(f'购买的车型为：{"".join(car_info["configdetail"]["ModelName"].split("-"))}-'
       f'{car_info["configdetail"]["ModelYear"]}-{model_type_detail[0]}')
-
-print(107640+251160)

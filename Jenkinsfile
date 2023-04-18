@@ -1,21 +1,21 @@
-pipeline{
-    agent{
-        dockerfile{
-//             filename "Dockerfile"
-            dir 'Dockerfile' // Dockerfile 所在目录
-            label 'docker' // 运行构建的标签（可选）
+pipeline {
+    agent {
+        dockerfile {
+            filename "Dockerfile"
+//             dir 'Dockerfile' // Dockerfile 所在目录
+//             label 'docker' // 运行构建的标签（可选）
         }
     }
 
-    stages{
-        stage("build"){
+    stages {
+        stage("build") {
             steps{
                 sh "python3 main.py"
             }
         }
 
-        stage("html"){
-            steps{
+        stage("html") {
+            steps {
                 publishHTML(target: [allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,

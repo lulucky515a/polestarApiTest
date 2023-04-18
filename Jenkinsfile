@@ -1,9 +1,11 @@
 pipeline {
     agent {
-        dockerfile {
+        docker {
 //             filename "Dockerfile"
-            dir 'Dockerfile' // Dockerfile 所在目录
-            label 'docker' // 运行构建的标签（可选）
+//             dir 'Dockerfile' // Dockerfile 所在目录
+//             label 'docker' // 运行构建的标签（可选）
+//             image 'python:3.8'
+            file 'Dockerfile'
         }
     }
 

@@ -1,15 +1,15 @@
 pipeline {
     agent {
         dockerfile {
-            filename "Dockerfile"
-//             dir 'Dockerfile' // Dockerfile 所在目录
-//             label 'docker' // 运行构建的标签（可选）
+//             filename "Dockerfile"
+            dir 'Dockerfile' // Dockerfile 所在目录
+            label 'docker' // 运行构建的标签（可选）
         }
     }
 
     stages {
         stage("build") {
-            steps{
+            steps {
                 sh "python3 main.py"
             }
         }

@@ -17,7 +17,7 @@ from common import handleWebhook, handleContants, handleHistory
 suite = unittest.defaultTestLoader.discover(handleContants.testCasesDir,
                                             pattern='test*.py')
 
-handleHistory.HandleReportsFile().moveReportFile()
+# handleHistory.HandleReportsFile().moveReportFile()
 
 runner = TestRunner(suite,
                     filename=handleContants.path,

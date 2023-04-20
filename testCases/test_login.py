@@ -28,10 +28,10 @@ class LoginTest(unittest.TestCase):
         cls.request = Request()
 
     def setUp(self):
-        caseLog.info('{:=^80s}'.format('Test Query Offer Salary Exceed Start'))
+        caseLog.info('{:=^80s}'.format('Test Login Start'))
 
     def tearDown(self):
-        caseLog.info('{:=^80s}'.format('Test Query Offer Salary Exceed End'))
+        caseLog.info('{:=^80s}'.format('Test Login End'))
 
     @classmethod
     def tearDownClass(cls):

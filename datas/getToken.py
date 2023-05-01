@@ -6,7 +6,6 @@
 
 
 import json
-
 from common.handleRequest import Request
 from common.handleLogger import caseLog
 from common.handleConfig import conFig
@@ -23,13 +22,10 @@ def getToken(url, body=None, header=None, method="post"):
         return resp
 
 
-# bpm
-bmpBody = {"client_id": conFig.getValue('Headers', 'client_id'),
-           "client_secret": conFig.getValue('Headers', 'client_secret'),
-           "grant_type": conFig.getValue('Headers', 'grant_type'),
-           "scope": conFig.getValue('Headers', 'scope')}
-token = getToken(url=(conFig.getValue('URL', 'base_url') + conFig.getValue('URL', 'token_url')),
-                 body=bmpBody).json()["access_token"]
+# unionid
+body = {"unionid": conFig.getValue('LoginInfo', 'unionid')}
+token = getToken(url=(conFig.getValue('URL', 'base_url') + conFig.getValue('URL', 'union_url')),
+                 header=conFig.getValue('Headers', 'headers'), body=body)
 
 # p+
 """

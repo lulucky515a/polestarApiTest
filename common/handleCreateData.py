@@ -6,7 +6,8 @@
 
 
 import time
-import random, string
+import random
+import string
 from faker import Faker
 
 

@@ -7,8 +7,7 @@
 
 import os
 import openpyxl
-from common.handleContants import dataDir
-from common.handleConfig import conFig
+from common import dataDir, conFig
 
 
 def createExcel(excel_name):
@@ -83,9 +82,25 @@ class DoExcel(object):
             if item not in dic2.items():
                 raise AssertionError("{} items not in {}".format(dic1, dic2))
 
+    def writeDatas(self, row, orderNumber, orderID, carType, financeOrder, price,
+                   finance20006, finance20009, finance20013):
+        self.open()
+        if isinstance(row, int) and (2 <= row <= self.sh.max_row):
+            self.sh.cell(row, 3).value = orderNumber
+            self.sh.cell(row, 4).value = orderID
+            self.sh.cell(row, 5).value = carType
+            self.sh.cell(row, 6).value = financeOrder
+            self.sh.cell(row, 7).value = price
+            self.sh.cell(row, 8).value = finance20006
+            self.sh.cell(row, 9).value = finance20009
+            self.sh.cell(row, 10).value = finance20013
+            self.wb.save(filename=self.file_name)
+        else:
+            print('传入的行号有误，行号应为大于1的整数！')
+
 
 if __name__ == '__main__':
     valorant = DoExcel(file_name=r"/Users/luzhixiang/PycharmProjects/polestarApiTest/datas/bpmPr.xlsx",
-                       sheet_name="0603续签流程")
+                       sheet_name="01login")
     list1 = valorant.read_datas()
     print(list1)

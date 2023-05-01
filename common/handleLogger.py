@@ -7,8 +7,8 @@
 
 import logging
 import logging.handlers
-from common import handleContants
 from common.handleConfig import conFig
+from common import handleContants
 
 
 inLevel = eval(conFig.getValue('LogNew', 'in_level'))

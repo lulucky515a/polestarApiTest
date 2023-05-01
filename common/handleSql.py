@@ -7,7 +7,7 @@
 
 import psycopg2
 import random
-from common.handleConfig import conFig
+from common import conFig
 
 
 class HandleSql:

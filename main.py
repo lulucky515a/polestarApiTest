@@ -15,7 +15,7 @@ from common import handleWebhook, handleContants, handleHistory
 
 
 suite = unittest.defaultTestLoader.discover(handleContants.testCasesDir,
-                                            pattern='test*.py')
+                                            pattern='test_f*.py')
 
 handleHistory.HandleReportsFile().moveReportFile()
 
@@ -25,7 +25,7 @@ runner = TestRunner(suite,
                     title='PoleStarApiTest',
                     tester='Luke',
                     desc="autoTestApi",
-                    templates=2)
+                    templates=1)
 runner.run(thread_count=1)
 
 # handleWebhook.testWxWebhook()

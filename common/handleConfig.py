@@ -29,7 +29,7 @@ class ReadConfig:
 
 
 conFig = ReadConfig()
-
+pro_conFig = ReadConfig(filename=handleContants.productConfFile)
 
 class WriteConfig(object):
     @staticmethod
@@ -60,7 +60,7 @@ bpmFig = ReadConfig(filename=handleContants.bpmConfFile)
 writeConfig = WriteConfig()
 
 if __name__ == '__main__':
-    res = ReadConfig(filename=handleContants.bpmConfFile)
-    res2 = res.getValue('empInfo1', 'employee_number')
+    res = ReadConfig(filename=handleContants.productConfFile)
+    res2 = res.getValue('URL', 'base_url')
     print(res2)
 

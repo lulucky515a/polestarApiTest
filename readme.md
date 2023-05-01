@@ -16,6 +16,25 @@
 ## 项目启动或者使用说明
 - 运行项目脚本
   - main.py
+- 更新车辆状态
+  - from common import handleData.py
+    - 获取系统时间
+      - TradeDateTime()
+    - 获取unionid
+      - get_unionid()
+    - 更新车辆订单状态
+      - update_order_status()
+    - 生成vin
+      - create_vin()
+
+- 获取金融方案
+  - test_finance.py
+- 获取订单信息
+  - from common import handleCarInfo.order
+- 获取车辆信息
+  - from common import handleCarInfo.car_info
+- 获取金融订单信息
+  - from common improt handleCarInfo.loan_order_detail
 
 ## 项目结构简介
 - common

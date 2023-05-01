@@ -8,8 +8,7 @@
 import json
 import requests
 from datetime import datetime
-from common import handleContants
-from common.handleContants import reportsDir
+from common import handleContants, reportsDir
 
 
 URL = "http://localhost:63342" + "/" + reportsDir.split(sep="/", maxsplit=4)[-1] + "/" + handleContants.path

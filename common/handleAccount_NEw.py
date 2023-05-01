@@ -10,14 +10,9 @@ import datetime
 import json
 import random
 
-from common import handleContants
-from common.handleRequest import Request
-from common.handleLogger import caseLog
-from common.handleConfig import conFig, writeConfig
-from common.identity.identity import random_sex, IdNumber
-from common.handleCreateData import createData, timeNumber, randomNumber
-from datas.getToken import token
-
+# from datas.getToken import token
+from common import handleContants, Request, caseLog, conFig, writeConfig, \
+    random_sex, IdNumber, createData, timeNumber, randomNumber
 
 startDay = str(datetime.date.today())
 

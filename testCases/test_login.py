@@ -7,14 +7,7 @@
 
 import warnings
 import unittest
-from unittestreport import ddt, list_data
-
-from common.handleConfig import conFig
-from common.handleContext import Context
-from common.handleExcel import DoExcel
-from common.handleLogger import caseLog
-from common.handleRequest import Request
-# from datas.getToken import token
+from testCases import ddt, list_data, DoExcel, caseLog, Request, conFig, Context
 
 
 @ddt
@@ -48,11 +41,6 @@ class LoginTest(unittest.TestCase):
         else:
             data_new = case["data"]
 
-        # self.head = {}
-        # if case["api"] == "auth":
-        #     self.head["Authorization"] = "Bearer"
-        # else:
-        #     self.head["Authorization"] = "Bearer" + " " + token
         self.head = conFig.getValue('Headers', 'headers')
 
         resp = self.request.request(case["method"], url, data=data_new, headers=self.head, verify=False)

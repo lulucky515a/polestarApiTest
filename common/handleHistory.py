@@ -7,7 +7,7 @@
 
 import shutil
 import os
-from common.handleContants import reportsDir, historyReportDir
+from common import reportsDir, historyReportDir
 
 
 class HandleReportsFile:

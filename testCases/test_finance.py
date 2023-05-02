@@ -7,18 +7,13 @@
 
 import warnings
 import unittest
-from testCases import ddt, list_data, DoExcel, caseLog, Request, \
-    PAB_0SL_list_0, PAB_0SL_list_1, PAB_0SL_list_2, \
-    PAB_1BL_list_0, PAB_1BL_list_1, PAB_1BL_list_2, \
-    PAB_2FAL_list_0, PAB_2FAL_list_1, PAB_2FAL_list_2
+from testCases import ddt, list_data, DoExcel, caseLog, Request, caseList
 
 
 @ddt
 class FinanceTest(unittest.TestCase):
     doExcelPage = DoExcel(sheet_name="financeRecord")
-    caseList = [PAB_0SL_list_0, PAB_0SL_list_1, PAB_0SL_list_2,
-                PAB_1BL_list_0, PAB_1BL_list_1, PAB_1BL_list_2,
-                PAB_2FAL_list_0, PAB_2FAL_list_1, PAB_2FAL_list_2]
+    # caseList = caseList
 
     @classmethod
     def setUpClass(cls):

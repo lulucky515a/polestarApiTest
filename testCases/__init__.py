@@ -104,6 +104,9 @@ PAB_2FAL_list_2 = {"case_id": 9, "title": "平安-金融贷款-定额贷款-气�
                            PAB_1BalloonLoan.PAB_1BL_info.loan_review_20009_body(),
                            PAB_1BalloonLoan.PAB_1BL_info.loan_review_20013_body()]}
 
+caseList = [PAB_0SL_list_0, PAB_0SL_list_1, PAB_0SL_list_2,
+            PAB_1BL_list_0, PAB_1BL_list_1, PAB_1BL_list_2,
+            PAB_2FAL_list_0, PAB_2FAL_list_1, PAB_2FAL_list_2]
 
 if __name__ == '__main__':
     pass

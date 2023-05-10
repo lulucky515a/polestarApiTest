@@ -8,8 +8,7 @@
 import re
 import random
 import datetime
-from common import conFig
-
+from common import conFig, image_to_base64, imageFile, imageFilePNG, imageFileOther
 
 startDay = str(datetime.date.today())
 
@@ -17,6 +16,10 @@ startDay = str(datetime.date.today())
 class Context:
     # login
     unionid = conFig.getValue('LoginInfo', 'unionid')
+    # image
+    image = image_to_base64(imageFile)
+    imagePNG = image_to_base64(imageFilePNG)
+    imageOther = image_to_base64(imageFileOther)
 
     # general
     amount = str(round(random.uniform(4, 100), 2))

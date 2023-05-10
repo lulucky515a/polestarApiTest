@@ -22,7 +22,7 @@ handleHistory.HandleReportsFile().moveReportFile()
 runner = TestRunner(suite,
                     filename=handleContants.path,
                     report_dir=handleContants.reportsDir,
-                    title='PoleStarApiTest',
+                    title='PoleStarApiTest-PAB-定额贷',
                     tester='Luke',
                     desc="autoTestApi",
                     templates=1)

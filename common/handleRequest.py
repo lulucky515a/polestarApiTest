@@ -17,8 +17,13 @@ class Request:
     def request(self, method, url, data=None, headers=None, auth=None, verify=True):
         method = method.upper()
 
+        # if data is not None and type(data) == str:
+        #     data = json.loads(data)
         if data is not None and type(data) == str:
-            data = json.loads(data)
+            try:
+                data = json.loads(data)
+            except json.decoder.JSONDecodeError as e:
+                print("Failed to parse request data as JSON, exception info:", e)
         if headers is not None and type(headers) == str:
             headers = json.loads(headers)
 

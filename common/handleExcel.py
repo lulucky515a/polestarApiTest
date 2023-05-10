@@ -5,6 +5,7 @@
 # @Time: 3月 31, 2023
 
 
+import json
 import os
 import openpyxl
 from common import dataDir, conFig
@@ -82,6 +83,19 @@ class DoExcel(object):
             if item not in dic2.items():
                 raise AssertionError("{} items not in {}".format(dic1, dic2))
 
+    @staticmethod
+    def check_json_keys(actual_json, expected_json):
+        try:
+            actual_keys = set(json.loads(actual_json).keys())
+            expected_keys = set(json.loads(expected_json).keys())
+        except (json.decoder.JSONDecodeError, ValueError) as e:
+            print(f"Invalid JSON data: {e}")
+            return False
+        if actual_keys != expected_keys:
+            print(f"Actual keys {actual_keys} do not match expected keys {expected_keys}")
+            return False
+        return True
+
     def writeDatas(self, row, orderNumber, orderID, carType, financeOrder, price,
                    finance20006, finance20009, finance20013):
         self.open()
@@ -101,6 +115,26 @@ class DoExcel(object):
 
 if __name__ == '__main__':
     valorant = DoExcel(file_name=r"/Users/luzhixiang/PycharmProjects/polestarApiTest/datas/bpmPr.xlsx",
-                       sheet_name="01login")
+                       sheet_name="profile")
     list1 = valorant.read_datas()
-    print(list1)
+    # print(list1)
+    data = """
+    {
+    "id": "ebfdefd9-092b-4575-9530-3a4947333661",
+    "avatar": "https://pscnid-profile-avatar-stg.s3.cn-northwest-1.amazonaws.com.cn/avatar-ebfdefd9-092b-4575-9530-3a4947333661-1683341862475.jpeg",
+    "nickname": "lu",
+    "mobile": "13816031063",
+    "birthday": null,
+    "birthdaymodifycount": 0,
+    "gender": "",
+    "focusmodel": "",
+    "hobbies": "{\"科技\",\"运动\",\"时尚\"}",
+    "province": "",
+    "city": "",
+    "district": "",
+    "address": "",
+    "detail": null
+}
+    """
+    print(list1[0]["expected"])
+    print(valorant.check_json_keys(data, json.dumps(list1[0]["expected"])))

@@ -23,9 +23,10 @@ from common.handleData import get_order_info, get_loan_offer_info, get_loan_orde
 
 # handleContext.py
 # from common.handleConfig import conFig, bpmFig
-from common.handleCreateData import createData, numbers, UID, randomNumber
+from common.handleCreateData import createData, numbers, UID, randomNumber, image_to_base64
 from common.identity.identity import IdNumber
 # from common.handleAccount_NEw import get_value
+from common.handleContants import imageFile, imageFilePNG, imageFileOther
 
 # handleCreateDate.py
 

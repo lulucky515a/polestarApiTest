@@ -7,13 +7,12 @@
 
 import warnings
 import unittest
-from testCases import ddt, list_data, DoExcel, caseLog, Request, caseList
+from testCases import ddt, list_data, DoExcel, caseLog, Request, caseList, authorization
 
 
 @ddt
 class FinanceTest(unittest.TestCase):
     doExcelPage = DoExcel(sheet_name="financeRecord")
-    # caseList = caseList
 
     @classmethod
     def setUpClass(cls):
@@ -33,6 +32,7 @@ class FinanceTest(unittest.TestCase):
     @list_data(caseList)
     def test_finance(self, case):
         caseLog.info("开始执行第{}条用例: {}".format(case["case_id"], case["title"]))
+        print(f'Authorization: {authorization}')
         print(f'标题：{case["title"]}')
         print(f'订单编号：{case["ArchivesCode"]}')
         print(f'车辆订单编号：{case["OrderId"]}')

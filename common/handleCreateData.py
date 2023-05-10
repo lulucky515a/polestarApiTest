@@ -5,6 +5,7 @@
 # @Time: 3月 31, 2023
 
 
+import base64
 import time
 import random
 import string
@@ -20,6 +21,12 @@ def randomNumber():
 def timeNumber():
     t = time.time()
     return str(int(round(t * 1000)))
+
+
+def image_to_base64(file_path):
+    with open(file_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    return encoded_string.decode("utf-8")
 
 
 class CreateData:
@@ -75,3 +82,8 @@ if __name__ == '__main__':
     # print(createData.address())
     # print(createData.company())
     # print(createData.ids())
+    """
+    file_path = "/Users/luzhixiang/Downloads/polesatar/testcases/个人信息修改/avatar.jpg"
+    base64_string = image_to_base64(file_path)
+    print(base64_string)
+    """

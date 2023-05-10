@@ -39,7 +39,10 @@ def TradeDateTime(mins=0):
 res = Request()
 header = eval(conFig.getValue('Headers', 'headers'))
 # checkout_order = 21095266
-checkout_order = conFig.getValue('PAB_FAL', 'ArchivesCode')
+# checkout_order = conFig.getValue('PAB_SL', 'ArchivesCode')  # 标准贷款
+# checkout_order = conFig.getValue('PAB_BL', 'ArchivesCode')  # 气球贷款
+# checkout_order = conFig.getValue('PAB_FAL', 'ArchivesCode')  # 定额贷款
+checkout_order = conFig.getValue('BOC_FAL', 'ArchivesCode')  # BOC-定额贷款
 
 
 def get_unionid():
@@ -106,7 +109,7 @@ def get_loan_order_detail(order_id):
 
 
 def get_car_order():
-    # with open('/Users/luzhixiang/PycharmProjects/polestarApiTest/datas/order.json', 'r') as f:
+    # with open('/Users/luzhixiang/PycharmProjects/polestarApiTest/datas/order_biaozhunzulin.json', 'r') as f:
     #     data = json.load(f)
     data = get_order_info()
     run_list = jsonpath.jsonpath(data, f'$[?(@.pomsid == "{checkout_order}")].id')
@@ -131,11 +134,11 @@ def create_vin():
 if __name__ == '__main__':
     print(TradeDateTime())
     # print(f"获取unionid：{get_unionid()}")
-    # print(f"更新订单状态：{update_order_status()}")
+    print(f"更新订单状态：{update_order_status()}")
     # get_order_info()
     # print(f"获取车辆订单： {get_car_order()}")
-    # print(f"生成vin：{create_vin()}")
-    print(get_loan_order_detail("b236e8a5-8881-4716-8b64-672750b6a3be"))
+    print(f"生成vin：{create_vin()}")
+    # print(get_loan_order_detail("b236e8a5-8881-4716-8b64-672750b6a3be"))
 
 
 

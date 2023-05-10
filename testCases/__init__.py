@@ -10,6 +10,7 @@ from unittestreport import ddt, list_data
 from common.handleExcel import DoExcel
 from common.handleLogger import caseLog
 from common.handleRequest import Request
+from common.handleData import authorization
 from datas.pab import PAB_0StandardLoan, PAB_1BalloonLoan, PAB_2FixedAmountLoan
 
 # test_login.py

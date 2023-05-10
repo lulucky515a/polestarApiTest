@@ -3,7 +3,7 @@
 # @File: handleCarInfo.py
 # @Author: Luke
 # @Time: 3月 31, 2023
-
+import json
 
 import jsonpath
 from common import pro_conFig, get_order_info, get_loan_offer_info, get_loan_order_detail
@@ -73,9 +73,52 @@ class Order:
             return loan_info
 
 
+def get_price_info(file):
+    with open(file, "r", encoding='utf-8') as f1:
+        car = f1.read()
+    print(json.loads(car)["detail"])
+    # 首付金额
+    downPaymentPrice = json.loads(car)["detail"]["downPaymentPrice"]
+    print(f'首付金额：{downPaymentPrice}')
+    # 尾款金额
+    try:
+        finalPrice = json.loads(car)["detail"]["finalPrice"]
+    except Exception as e:
+        print(f"Invalid JSON data: {e}")
+    else:
+        print(f'尾款金额：{finalPrice}')
+    # 贷款金额/租赁金额
+    installmentPrice = json.loads(car)["detail"]["installmentPrice"]
+    print(f'贷款金额/租赁金额：{installmentPrice}')
+    # 月还款额/月租金额
+    installmentCustomerFirstMonthlyPrice = json.loads(car)["detail"]["installmentCustomerFirstMonthlyPrice"]
+    print(f'月还款额/月租金额：{installmentCustomerFirstMonthlyPrice}')
+    # price = 首付金额+贷款金额
+    totalPrice = downPaymentPrice + installmentPrice
+    print(f'车价：{totalPrice}')
+
+
 if __name__ == '__main__':
     order_info = Order(order_info=get_order_info(), id_number=pro_conFig.getValue('PAB_SL', 'ArchivesCode'))
     # order_info = Order(order_info=get_order_info(), id_number=pro_conFig.getValue('PAB_BL', 'ArchivesCode'))
     # order_info = Order(order_info=get_order_info(), id_number=pro_conFig.getValue('PAB_FAL', 'ArchivesCode'))
     # print(order_info.car_info())
-    print(order_info.loan_order_detail())
+    # print(order_info.loan_order_detail())
+
+    # 标准贷款
+    print('{:=^80s}'.format('标准贷款'))
+    get_price_info(r'/Users/luzhixiang/PycharmProjects/polestarApiTest/datas/order_SL.json')
+    # 气球贷款
+    print('{:=^80s}'.format('气球贷款'))
+    get_price_info(r'/Users/luzhixiang/PycharmProjects/polestarApiTest/datas/order_BL.json')
+    # 定额贷款
+    print('{:=^80s}'.format('定额贷款'))
+    get_price_info(r'/Users/luzhixiang/PycharmProjects/polestarApiTest/datas/order_FAL.json')
+    # 标准租赁
+    print('{:=^80s}'.format('标准租赁'))
+    get_price_info(r'/Users/luzhixiang/PycharmProjects/polestarApiTest/datas/order_biaozhunzulin.json')
+
+
+
+
+

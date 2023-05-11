@@ -70,3 +70,4 @@ class ProfileTest(unittest.TestCase):
             caseLog.error("第{0}用例执行结果：FAIL".format(case["case_id"]))
             caseLog.error("断言出错了".format(e))
             raise e
+

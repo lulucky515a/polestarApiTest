@@ -15,14 +15,14 @@ from common import handleWebhook, handleContants, handleHistory
 
 
 suite = unittest.defaultTestLoader.discover(handleContants.testCasesDir,
-                                            pattern='test_f*.py')
+                                            pattern='test_p*.py')
 
 handleHistory.HandleReportsFile().moveReportFile()
 
 runner = TestRunner(suite,
                     filename=handleContants.path,
                     report_dir=handleContants.reportsDir,
-                    title='PoleStarApiTest-PAB-定额贷',
+                    title='PoleStarApiTest-个人信息修改',
                     tester='Luke',
                     desc="autoTestApi",
                     templates=1)
